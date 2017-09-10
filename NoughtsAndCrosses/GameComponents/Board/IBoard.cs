@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoughtsAndCrossesComponents
+namespace GameComponents.Board
 {
-    public class Class1
-    { 
+    public interface IBoard
+    {
     }
 }
