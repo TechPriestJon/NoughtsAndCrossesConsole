@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameComponents.Squares
 {
-    public interface INandCSquare : ISquare
+    public interface IGameSquare
     {
         NoughtCrossToken? Value { get; set; }
     }

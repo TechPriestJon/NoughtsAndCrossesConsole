@@ -7,20 +7,29 @@ using GameComponents.Board;
 namespace GameComponentsUnitTests
 {
     [TestClass]
-    public class NandCBoard2DTests
+    public class GameBoardTests
     {
-        private INandCBoard2D _board;
+        private IGameBoard _board;
+        private IGameSquare[][] _squares;
 
         [TestInitialize]
-        public void InitiateBoard()
+        public void InitiateBoardResources()
         {
-            _board = new NandCBoard2D();
+            _squares = new GameSquare[3][];
+            for (int i = 0; i < 3; i++)
+            {
+                _squares[i] = new GameSquare[3];
+                for (int j = 0; j < 3; j++)
+                {
+                    _squares[i][j] = new GameSquare();
+                }
+            }
         }
 
         [TestMethod]
         public void BoardInitialized3By3()
         {
-            _board = new NandCBoard2D();
+            _board = new GameBoard(_squares);
             Assert.IsNotNull(_board);
             var boardSquares = _board.GetBoard();
             Assert.AreEqual(3, boardSquares.Length);
@@ -32,7 +41,7 @@ namespace GameComponentsUnitTests
         {
             int x = 0;
             int y = 0;
-            _board = new NandCBoard2D();
+            _board = new GameBoard(_squares);
             var value = _board.GetSquare(x, y);
             Assert.IsNull(value);
         }
@@ -43,7 +52,7 @@ namespace GameComponentsUnitTests
             int x = 0;
             int y = 0;
             NoughtCrossToken value = NoughtCrossToken.X;
-            _board = new NandCBoard2D();
+            _board = new GameBoard(_squares);
             _board.SetSquare(x, y, value);
             var setValue = _board.GetSquare(x, y);
             Assert.AreEqual(value, setValue);
@@ -55,7 +64,7 @@ namespace GameComponentsUnitTests
             int x = 1;
             int y = 2;
             NoughtCrossToken value = NoughtCrossToken.X;
-            _board = new NandCBoard2D();
+            _board = new GameBoard(_squares);
             _board.SetSquare(x, y, value);
             var setValue = _board.GetSquare(x, y);
             Assert.AreEqual(value, setValue);
@@ -67,7 +76,7 @@ namespace GameComponentsUnitTests
             int x = 2;
             int y = 0;
             NoughtCrossToken value = NoughtCrossToken.X;
-            _board = new NandCBoard2D();
+            _board = new GameBoard(_squares);
             _board.SetSquare(x, y, value);
             var setValue = _board.GetSquare(x, y);
             Assert.AreEqual(value, setValue);
@@ -75,12 +84,12 @@ namespace GameComponentsUnitTests
 
         [ExpectedException(typeof(InvalidOperationException))]
         [TestMethod]
-        public void SetAlreadySetBoardSquare()
+        public void ThrowErrorOnAlreadySetBoardSquare()
         {
             int x = 0;
             int y = 0;
             NoughtCrossToken value = NoughtCrossToken.X;
-            _board = new NandCBoard2D();
+            _board = new GameBoard(_squares);
             _board.SetSquare(x, y, value);
             value = NoughtCrossToken.O;
             _board.SetSquare(x, y, value);

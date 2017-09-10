@@ -8,24 +8,16 @@ using GameComponents.Squares;
 
 namespace GameComponents.Board
 {
-    public class NandCBoard2D : INandCBoard2D
+    public class GameBoard : IGameBoard
     {
-        private INandCSquare[][] _squares;
+        private IGameSquare[][] _squares;
 
-        public NandCBoard2D()
+        public GameBoard(IGameSquare[][] squares)
         {
-            _squares = new NandCSquare[3][];
-            for(int i = 0; i < 3; i++)
-            {
-                _squares[i] = new NandCSquare[3];
-                for (int j = 0; j < 3; j++)
-                {
-                    _squares[i][j] = new NandCSquare();
-                }
-            }
+            _squares = squares;
         }
 
-        public INandCSquare[][] GetBoard()
+        public IGameSquare[][] GetBoard()
         {
             return _squares;
         }

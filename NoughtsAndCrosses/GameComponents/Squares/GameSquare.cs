@@ -7,7 +7,7 @@ using GameComponents.Enum;
 
 namespace GameComponents.Squares
 {
-    public class NandCSquare : INandCSquare
+    public class GameSquare : IGameSquare
     {
         private NoughtCrossToken? _value;
         public NoughtCrossToken? Value

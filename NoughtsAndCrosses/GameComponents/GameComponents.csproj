@@ -40,16 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Board\IBoard.cs" />
-    <Compile Include="Board\INandCBoard2D.cs" />
-    <Compile Include="Board\NandCBoard2D.cs" />
+    <Compile Include="Board\IGameBoard.cs" />
+    <Compile Include="Board\GameBoard.cs" />
+    <Compile Include="DTOs\TurnReportDTO.cs" />
+    <Compile Include="Enum\GameState.cs" />
     <Compile Include="Enum\NoughtCrossToken.cs" />
+    <Compile Include="Game\GameWinStates.cs" />
     <Compile Include="Game\IGame.cs" />
-    <Compile Include="Player\IPlayer.cs" />
+    <Compile Include="Game\Game.cs" />
+    <Compile Include="Game\AbstractGame.cs" />
+    <Compile Include="Player\IGamePlayer.cs" />
+    <Compile Include="Player\GamePlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Squares\INandCSquare.cs" />
-    <Compile Include="Squares\ISquare.cs" />
-    <Compile Include="Squares\NandCSquare.cs" />
+    <Compile Include="Squares\IGameSquare.cs" />
+    <Compile Include="Squares\GameSquare.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

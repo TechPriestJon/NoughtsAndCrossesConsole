@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameComponents.Board
+namespace GameComponents.Enum
 {
-    public interface IBoard
+    public enum GameState
     {
+        NotStarted,
+        InProgress,
+        Won
     }
 }

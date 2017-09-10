@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace GameComponents.Board
 {
-    public interface INandCBoard2D : IBoard
+    public interface IGameBoard
     {
-        INandCSquare[][] GetBoard();
+        IGameSquare[][] GetBoard();
 
         void SetSquare(int x, int y, NoughtCrossToken value);
 
