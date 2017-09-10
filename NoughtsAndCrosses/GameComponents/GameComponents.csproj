@@ -45,10 +45,12 @@
     <Compile Include="DTOs\TurnReportDTO.cs" />
     <Compile Include="Enum\GameState.cs" />
     <Compile Include="Enum\NoughtCrossToken.cs" />
+    <Compile Include="Game\GameVictoryCalculator.cs" />
     <Compile Include="Game\GameWinStates.cs" />
     <Compile Include="Game\IGame.cs" />
     <Compile Include="Game\Game.cs" />
     <Compile Include="Game\AbstractGame.cs" />
+    <Compile Include="Game\IGameVictoryCalculator.cs" />
     <Compile Include="Player\IGamePlayer.cs" />
     <Compile Include="Player\GamePlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

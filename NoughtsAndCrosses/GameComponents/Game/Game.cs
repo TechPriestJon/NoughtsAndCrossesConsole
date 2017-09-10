@@ -13,8 +13,12 @@ namespace GameComponents.Game
 {
     public class Game : AbstractGame, IGame
     {
-        public Game(List<IGamePlayer> players, IGameBoard board, Guid playerOneId, NoughtCrossToken playerOneToken) : base(players, board, playerOneId, playerOneToken)
-        { }
+        protected IGameVictoryCalculator _victoryCalculator;
+
+        public Game(List<IGamePlayer> players, IGameBoard board, Guid playerOneId, NoughtCrossToken playerOneToken, IGameVictoryCalculator victoryCalculator) : base(players, board, playerOneId, playerOneToken)
+        {
+           _victoryCalculator = victoryCalculator;
+        }
 
         public override List<IGamePlayer> Players => _players;
         public override IGameBoard Board => _board;
@@ -38,6 +42,15 @@ namespace GameComponents.Game
                 Winner = Guid.Empty
             };
 
+            if(_winner != null)
+            {
+                report.GameState = GameState.Won;
+                report.Success = false;
+                report.Player = _winner.Id;
+                report.Winner = _winner.Id;
+                return report;
+            }
+
             try
             {
                 CalculateState(x, y);
@@ -48,7 +61,7 @@ namespace GameComponents.Game
                 report.Message = e.Message;
             }
 
-            if (IsGameWon())
+            if (_victoryCalculator.IsGameWon(_board.GetBoard()))
             {
                 _winner = _players.Find(e => e.Id == report.Player);
                 report.GameState = GameState.Won;
@@ -76,12 +89,5 @@ namespace GameComponents.Game
                 throw new ArgumentException("Player missing token");
             }
         }
-
-        private bool IsGameWon()
-        {
-            return false;
-
-        }
-
     }
 }

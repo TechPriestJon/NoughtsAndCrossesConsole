@@ -17,6 +17,7 @@ namespace GameComponentsUnitTests
         private IGameBoard _board;
         private List<IGamePlayer> _players;
         private IGamePlayer _playerOne;
+        private IGameVictoryCalculator _victoryCalculator;
 
         [TestInitialize]
         public void InitiateGameResources()
@@ -41,8 +42,8 @@ namespace GameComponentsUnitTests
                 new GamePlayer("Bob")
             };
             var playerOneToken = NoughtCrossToken.X;
-            
-            _Game = new Game(_players, _board, _playerOne.Id, playerOneToken);
+            _victoryCalculator = new GameVictoryCalculator(GameWinStates.GetStates());
+            _Game = new Game(_players, _board, _playerOne.Id, playerOneToken, _victoryCalculator);
             _playerOne.SetPlayerToken(playerOneToken);
 
         }
@@ -68,7 +69,7 @@ namespace GameComponentsUnitTests
                 _playerOne
             };
             var playerOneToken = NoughtCrossToken.X;
-            _Game = new Game(players, _board, _playerOne.Id, playerOneToken);
+            _Game = new Game(players, _board, _playerOne.Id, playerOneToken, _victoryCalculator);
         }
 
         [ExpectedException(typeof(ArgumentException))]
@@ -81,7 +82,7 @@ namespace GameComponentsUnitTests
                 new GamePlayer("Bob")
             };
             var playerOneToken = NoughtCrossToken.X;
-            _Game = new Game(players, _board, _playerOne.Id, playerOneToken);
+            _Game = new Game(players, _board, _playerOne.Id, playerOneToken, _victoryCalculator);
         }
 
         [ExpectedException(typeof(ArgumentException))]
@@ -95,7 +96,7 @@ namespace GameComponentsUnitTests
                 new GamePlayer("Sam")
             };
             var playerOneToken = NoughtCrossToken.X;
-            _Game = new Game(players, _board, _playerOne.Id, playerOneToken);
+            _Game = new Game(players, _board, _playerOne.Id, playerOneToken, _victoryCalculator);
         }
 
         [ExpectedException(typeof(ArgumentException))]
@@ -114,7 +115,7 @@ namespace GameComponentsUnitTests
                 }
             }
             var board = new GameBoard(squares);
-            _Game = new Game(_players, board, _playerOne.Id, playerOneToken);
+            _Game = new Game(_players, board, _playerOne.Id, playerOneToken, _victoryCalculator);
         }
 
         [TestMethod]
@@ -248,12 +249,12 @@ namespace GameComponentsUnitTests
         public void PlayToPlayerTwoWin()
         {
             var playerTwoId = _players.Find(e => e.Id != _playerOne.Id).Id;
-            _Game.PlayTurn(2, 0);
-            _Game.PlayTurn(1, 0);
-            _Game.PlayTurn(1, 1);
-            _Game.PlayTurn(1, 1);
             _Game.PlayTurn(0, 2);
-            var report = _Game.PlayTurn(1, 2);
+            _Game.PlayTurn(1, 1);
+            _Game.PlayTurn(1, 2);
+            _Game.PlayTurn(2, 2);
+            _Game.PlayTurn(2, 0);
+            var report = _Game.PlayTurn(0, 0);
 
             Assert.AreEqual(true, report.Success);
             Assert.AreEqual(playerTwoId, report.Winner);

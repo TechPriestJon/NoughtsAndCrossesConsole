@@ -7,6 +7,7 @@ using GameComponents.Board;
 using GameComponents.DTOs;
 using GameComponents.Player;
 using GameComponents.Enum;
+using GameComponents.Squares;
 
 namespace GameComponents.Game
 {
