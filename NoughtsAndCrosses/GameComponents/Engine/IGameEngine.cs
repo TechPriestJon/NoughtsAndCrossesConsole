@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GameComponents.Game
 {
-    public interface IGame
+    public interface IGameEngine
     {
         List<IGamePlayer> Players { get; }
         IGameBoard Board { get; }

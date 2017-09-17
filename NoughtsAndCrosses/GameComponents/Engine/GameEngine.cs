@@ -11,11 +11,11 @@ using GameComponents.Squares;
 
 namespace GameComponents.Game
 {
-    public class Game : AbstractGame, IGame
+    public class GameEngine : BaseGameEngine, IGameEngine
     {
         protected IGameVictoryCalculator _victoryCalculator;
 
-        public Game(List<IGamePlayer> players, IGameBoard board, Guid playerOneId, NoughtCrossToken playerOneToken, IGameVictoryCalculator victoryCalculator) : base(players, board, playerOneId, playerOneToken)
+        public GameEngine(List<IGamePlayer> players, IGameBoard board, Guid playerOneId, NoughtCrossToken playerOneToken, IGameVictoryCalculator victoryCalculator) : base(players, board, playerOneId, playerOneToken)
         {
            _victoryCalculator = victoryCalculator;
         }

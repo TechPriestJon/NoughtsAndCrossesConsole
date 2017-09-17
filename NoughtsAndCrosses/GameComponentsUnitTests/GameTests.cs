@@ -12,7 +12,7 @@ namespace GameComponentsUnitTests
     [TestClass]
     public class GameTests
     {
-        private IGame _Game;
+        private IGameEngine _Game;
         private IGameSquare[][] _squares;
         private IGameBoard _board;
         private List<IGamePlayer> _players;
@@ -43,7 +43,7 @@ namespace GameComponentsUnitTests
             };
             var playerOneToken = NoughtCrossToken.X;
             _victoryCalculator = new GameVictoryCalculator(GameWinStates.GetStates());
-            _Game = new Game(_players, _board, _playerOne.Id, playerOneToken, _victoryCalculator);
+            _Game = new GameEngine(_players, _board, _playerOne.Id, playerOneToken, _victoryCalculator);
             _playerOne.SetPlayerToken(playerOneToken);
 
         }
@@ -69,7 +69,7 @@ namespace GameComponentsUnitTests
                 _playerOne
             };
             var playerOneToken = NoughtCrossToken.X;
-            _Game = new Game(players, _board, _playerOne.Id, playerOneToken, _victoryCalculator);
+            _Game = new GameEngine(players, _board, _playerOne.Id, playerOneToken, _victoryCalculator);
         }
 
         [ExpectedException(typeof(ArgumentException))]
@@ -82,7 +82,7 @@ namespace GameComponentsUnitTests
                 new GamePlayer("Bob")
             };
             var playerOneToken = NoughtCrossToken.X;
-            _Game = new Game(players, _board, _playerOne.Id, playerOneToken, _victoryCalculator);
+            _Game = new GameEngine(players, _board, _playerOne.Id, playerOneToken, _victoryCalculator);
         }
 
         [ExpectedException(typeof(ArgumentException))]
@@ -96,7 +96,7 @@ namespace GameComponentsUnitTests
                 new GamePlayer("Sam")
             };
             var playerOneToken = NoughtCrossToken.X;
-            _Game = new Game(players, _board, _playerOne.Id, playerOneToken, _victoryCalculator);
+            _Game = new GameEngine(players, _board, _playerOne.Id, playerOneToken, _victoryCalculator);
         }
 
         [ExpectedException(typeof(ArgumentException))]
@@ -115,7 +115,7 @@ namespace GameComponentsUnitTests
                 }
             }
             var board = new GameBoard(squares);
-            _Game = new Game(_players, board, _playerOne.Id, playerOneToken, _victoryCalculator);
+            _Game = new GameEngine(_players, board, _playerOne.Id, playerOneToken, _victoryCalculator);
         }
 
         [TestMethod]

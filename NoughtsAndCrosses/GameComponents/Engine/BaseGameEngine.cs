@@ -11,7 +11,7 @@ using GameComponents.Squares;
 
 namespace GameComponents.Game
 {
-    public abstract class AbstractGame : IGame
+    public abstract class BaseGameEngine : IGameEngine
     {
         protected List<IGamePlayer> _players;
         protected IGameBoard _board;
@@ -25,7 +25,7 @@ namespace GameComponents.Game
         public virtual IGamePlayer Winner => _winner;
         public virtual Guid PlayerTurn => _playerTurn;
 
-        public AbstractGame(List<IGamePlayer> players, IGameBoard board, Guid playerOneId, NoughtCrossToken playerOneToken)
+        public BaseGameEngine(List<IGamePlayer> players, IGameBoard board, Guid playerOneId, NoughtCrossToken playerOneToken)
         {
             _players = players;
             _board = board;

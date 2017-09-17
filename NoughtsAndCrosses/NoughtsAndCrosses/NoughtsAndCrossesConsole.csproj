@@ -8,9 +8,10 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>NoughtsAndCrosses</RootNamespace>
     <AssemblyName>NoughtsAndCrosses</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -42,8 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\BaseConsoleGameBuilder.cs" />
+    <Compile Include="Builder\ConsoleGameBuilder.cs" />
+    <Compile Include="Builder\IConsoleGameBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\ConsoleUI.cs" />
+    <Compile Include="UI\IConsoleUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

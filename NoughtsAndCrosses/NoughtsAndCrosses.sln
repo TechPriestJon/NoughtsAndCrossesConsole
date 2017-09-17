@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoughtsAndCrosses", "NoughtsAndCrosses\NoughtsAndCrosses.csproj", "{1485DD12-5ACF-47A9-92A7-5BFFDAD2BD6B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoughtsAndCrossesConsole", "NoughtsAndCrosses\NoughtsAndCrossesConsole.csproj", "{1485DD12-5ACF-47A9-92A7-5BFFDAD2BD6B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameComponents", "GameComponents\GameComponents.csproj", "{AA8B13A1-E2E1-46B4-8C01-6320B524AD93}"
 EndProject
